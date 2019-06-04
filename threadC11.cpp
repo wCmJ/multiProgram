@@ -84,8 +84,16 @@ if(ul.try_lock())
 }
 
 
+//unique_lock: member function
+lock();
+unlock();
+try_lock();//尝试加锁，如果拿不到锁，就返回false。如果拿到了锁，返回true。非阻塞
+release();//返回管理的mutex对象指针，并释放所有权。unique_lock和mutex没有联系。 如果加锁情况下release，则返回指针负责解锁。
+unique_lock<mutex> ul(mutex);//已加锁
+mutex* ptx = ul.release();
+ptx->unlock();
 
-
+    
 
 
 
